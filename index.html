@@ -3,76 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculus Study Guide - Theorems & Integral Applications</title>
+    <title>Calculus Study Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
+        :root {
+            --primary-orange: #FF9800;
+            --dark-orange: #E65100;
+            --light-orange: #FFB74D;
+            --white: #ffffff;
+            --light-bg: #f8f9fa;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border-light: #FFE0B2;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --card-bg: #ffffff;
+            --header-bg: #ffffff;
+        }
+
+        .dark-mode {
+            --primary-orange: #FF9800;
+            --dark-orange: #FFB74D;
+            --light-orange: #FF5722;
+            --white: #1a1a1a;
+            --light-bg: #2d2d2d;
+            --text-dark: #f0f0f0;
+            --text-light: #cccccc;
+            --border-light: #444444;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --card-bg: #2d2d2d;
+            --header-bg: #2d2d2d;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text-dark);
+            background-color: var(--white);
             min-height: 100vh;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
         
         header {
-            background: white;
+            background: var(--header-bg);
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px var(--shadow);
             margin-bottom: 2rem;
             text-align: center;
+            border-top: 4px solid var(--primary-orange);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         h1 {
-            color: #2c3e50;
+            color: var(--dark-orange);
             margin-bottom: 0.5rem;
+            font-weight: 700;
+            font-size: 2.5rem;
         }
         
         .subtitle {
-            color: #7f8c8d;
+            color: var(--text-light);
             font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
         }
         
         .priority-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 25px;
             margin-bottom: 2rem;
         }
         
         .priority-card {
-            background: white;
-            border-radius: 10px;
+            background: var(--card-bg);
+            border-radius: 8px;
             padding: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 2px 10px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--primary-orange);
+            display: flex;
+            flex-direction: column;
         }
         
         .priority-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 5px 15px var(--shadow);
         }
         
         .priority-high {
-            border-left: 5px solid #e74c3c;
+            border-top-color: #FF5722;
         }
         
         .priority-medium {
-            border-left: 5px solid #f39c12;
+            border-top-color: var(--primary-orange);
         }
         
         .priority-low {
-            border-left: 5px solid #27ae60;
+            border-top-color: var(--light-orange);
         }
         
         .priority-badge {
@@ -82,74 +127,108 @@
             font-size: 0.8rem;
             font-weight: bold;
             margin-bottom: 1rem;
+            align-self: flex-start;
         }
         
         .badge-high {
-            background: #e74c3c;
+            background: #FF5722;
             color: white;
         }
         
         .badge-medium {
-            background: #f39c12;
+            background: var(--primary-orange);
             color: white;
         }
         
         .badge-low {
-            background: #27ae60;
+            background: var(--light-orange);
             color: white;
         }
         
         .content-section {
-            background: white;
-            border-radius: 10px;
+            background: var(--card-bg);
+            border-radius: 8px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px var(--shadow);
+            border-top: 4px solid var(--primary-orange);
         }
         
         h2 {
-            color: #2c3e50;
+            color: var(--dark-orange);
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid #ecf0f1;
+            border-bottom: 2px solid var(--border-light);
+            font-weight: 600;
+            font-size: 1.8rem;
         }
         
         h3 {
-            color: #34495e;
+            color: #FF5722;
             margin: 1.5rem 0 1rem 0;
+            font-weight: 600;
+            font-size: 1.4rem;
+        }
+        
+        h4 {
+            color: var(--dark-orange);
+            margin: 1rem 0 0.5rem 0;
+            font-weight: 500;
+            font-size: 1.2rem;
         }
         
         .theorem-box {
-            background: #f8f9fa;
-            border-left: 4px solid #3498db;
+            background: #FFF3E0;
+            border-left: 4px solid var(--primary-orange);
             padding: 1.5rem;
             margin: 1rem 0;
             border-radius: 0 5px 5px 0;
+        }
+        
+        .dark-mode .theorem-box {
+            background: #3a2e1e;
+            border-left: 4px solid var(--primary-orange);
         }
         
         .proof-box {
-            background: #e8f4f8;
-            border-left: 4px solid #1abc9c;
+            background: #FFECB3;
+            border-left: 4px solid #FFA000;
             padding: 1.5rem;
             margin: 1rem 0;
             border-radius: 0 5px 5px 0;
         }
         
+        .dark-mode .proof-box {
+            background: #3a321e;
+            border-left: 4px solid #FFA000;
+        }
+        
         .formula {
-            background: #f1f2f6;
+            background: #FFF8E1;
             padding: 1rem;
             border-radius: 5px;
             margin: 1rem 0;
             font-family: 'Courier New', monospace;
             overflow-x: auto;
+            border-left: 3px solid var(--light-orange);
+        }
+        
+        .dark-mode .formula {
+            background: #3a3521;
+            border-left: 3px solid var(--light-orange);
         }
         
         .example {
-            background: #fff9e6;
-            border-left: 4px solid #f1c40f;
+            background: #FFF3E0;
+            border-left: 4px solid var(--primary-orange);
             padding: 1.5rem;
             margin: 1rem 0;
             border-radius: 0 5px 5px 0;
+        }
+        
+        .dark-mode .example {
+            background: #3a2e1e;
+            border-left: 4px solid var(--primary-orange);
         }
         
         .step {
@@ -159,20 +238,266 @@
         
         .weight-percentage {
             font-size: 0.9rem;
-            color: #7f8c8d;
+            color: var(--text-light);
             font-weight: bold;
+        }
+        
+        .memory-device {
+            background: #FFECB3;
+            border-left: 4px solid #FFA000;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .dark-mode .memory-device {
+            background: #3a321e;
+            border-left: 4px solid #FFA000;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+        
+        th, td {
+            border: 1px solid #FFCCBC;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        .dark-mode th, .dark-mode td {
+            border: 1px solid #555;
+        }
+        
+        th {
+            background-color: #FFE0B2;
+            font-weight: 600;
+            color: var(--dark-orange);
+        }
+        
+        .dark-mode th {
+            background-color: #3a2e1e;
+            color: var(--light-orange);
+        }
+        
+        tr:nth-child(even) {
+            background-color: #FFF3E0;
+        }
+        
+        .dark-mode tr:nth-child(even) {
+            background-color: #2a2a2a;
+        }
+        
+        .math-container {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #FFF8E1;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 3px solid var(--light-orange);
+        }
+        
+        .dark-mode .math-container {
+            background: #3a3521;
+            border-left: 3px solid var(--light-orange);
         }
         
         footer {
             text-align: center;
             padding: 2rem;
-            color: white;
+            color: var(--text-light);
             margin-top: 2rem;
+            border-top: 1px solid var(--border-light);
         }
         
-        @media (max-width: 768px) {
+        .section-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+        
+        .nav-btn {
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: background 0.3s ease, transform 0.2s ease;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        
+        .nav-btn:hover {
+            background: #F57C00;
+            transform: translateY(-2px);
+        }
+        
+        .exam-tip {
+            background: #FFF3E0;
+            border-left: 4px solid var(--primary-orange);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .dark-mode .exam-tip {
+            background: #3a2e1e;
+            border-left: 4px solid var(--primary-orange);
+        }
+        
+        .exam-tip h4 {
+            color: var(--dark-orange);
+            margin-top: 0;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+            margin: 0.5rem 0;
+        }
+        
+        li {
+            margin-bottom: 0.3rem;
+        }
+        
+        .theme-toggle {
+            background: var(--primary-orange);
+            border: none;
+            color: white;
+            padding: 0.7rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .theme-toggle:hover {
+            background: #F57C00;
+        }
+        
+        .proof-text {
+            margin: 1rem 0;
+            line-height: 1.7;
+        }
+        
+        /* Desktop-specific styles */
+        @media (min-width: 1200px) {
+            .priority-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .content-section {
+                padding: 2.5rem;
+            }
+            
+            .priority-card {
+                padding: 2rem;
+            }
+        }
+        
+        /* Tablet styles */
+        @media (max-width: 1199px) and (min-width: 768px) {
+            .priority-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 767px) {
             .priority-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .section-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            header {
+                padding: 1.5rem 1rem;
+            }
+            
+            .theme-toggle {
+                align-self: center;
+            }
+            
+            .content-section {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .priority-card, .content-section {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 0.5rem;
+            }
+            
+            .nav-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -181,8 +506,12 @@
     <div class="container">
         <header>
             <h1>Calculus Study Guide</h1>
-            <p class="subtitle">Mastering Theorems & Integral Applications</p>
+            <p class="subtitle">Theorems, Integration Techniques, and Applications</p>
             <p><strong>Exam Focus:</strong> Prioritizing high-weight topics for maximum marks</p>
+            <button class="theme-toggle" id="themeToggle">
+                <span id="themeIcon">🌙</span>
+                <span id="themeText">Dark Mode</span>
+            </button>
         </header>
 
         <section class="priority-grid">
@@ -192,6 +521,7 @@
                 <ul>
                     <li>Mean Value Theorem</li>
                     <li>Rolle's Theorem</li>
+                    <li>Fermat's Theorem</li>
                     <li>Fundamental Theorem of Calculus</li>
                 </ul>
                 <p class="weight-percentage">Exam Weight: ~15 marks</p>
@@ -233,129 +563,273 @@
             </div>
         </section>
 
-        <section class="content-section">
-            <h2>1. Fundamental Theorems (High Priority)</h2>
+        <div class="section-nav">
+            <button class="nav-btn" onclick="scrollToSection('theorems')">Theorems</button>
+            <button class="nav-btn" onclick="scrollToSection('fermat')">Fermat's Theorem</button>
+            <button class="nav-btn" onclick="scrollToSection('mvt-integrals')">MVT for Integrals</button>
+            <button class="nav-btn" onclick="scrollToSection('derivatives')">Derivatives</button>
+            <button class="nav-btn" onclick="scrollToSection('integrals')">Integrals</button>
+            <button class="nav-btn" onclick="scrollToSection('integration-tech')">Integration Techniques</button>
+        </div>
+
+        <section id="theorems" class="content-section">
+            <h2>Part 1: Theorems with Proofs and Memory Devices</h2>
             
             <div class="theorem-box">
-                <h3>Mean Value Theorem (MVT)</h3>
-                <p><strong>Statement:</strong> If f is continuous on [a,b] and differentiable on (a,b), then there exists c ∈ (a,b) such that:</p>
-                <div class="formula">
-                    f'(c) = [f(b) - f(a)] / (b - a)
+                <h3>1. Extreme Value Theorem</h3>
+                <p><strong>Statement:</strong> If f is continuous on [a,b], then f attains absolute max and min values on [a,b].</p>
+                
+                <div class="proof-box">
+                    <h4>Proof Sketch:</h4>
+                    <div class="step">1. Continuity on closed interval → function is bounded</div>
+                    <div class="step">2. Let M = sup{f(x) : x ∈ [a,b]} and m = inf{f(x) : x ∈ [a,b]}</div>
+                    <div class="step">3. By completeness of ℝ, ∃ c,d ∈ [a,b] such that f(c) = M, f(d) = m</div>
                 </div>
-                <p><strong>When to use:</strong> When you need to prove existence of a point where instantaneous rate equals average rate.</p>
-            </div>
-            
-            <div class="proof-box">
-                <h4>Proof Strategy (MVT):</h4>
-                <div class="step">1. Define g(x) = f(x) - f(a) - [(f(b)-f(a))/(b-a)]·(x-a)</div>
-                <div class="step">2. Show g(a) = g(b) = 0</div>
-                <div class="step">3. Apply Rolle's Theorem to g(x)</div>
-                <div class="step">4. Conclude g'(c) = 0 for some c ∈ (a,b)</div>
-                <div class="step">5. Show this implies f'(c) = [f(b)-f(a)]/(b-a)</div>
+                
+                <div class="memory-device">
+                    <strong>Memory Device:</strong> "Closed + Continuous = Guaranteed Extremes"
+                </div>
             </div>
             
             <div class="theorem-box">
-                <h3>Rolle's Theorem</h3>
-                <p><strong>Statement:</strong> If f is continuous on [a,b], differentiable on (a,b), and f(a) = f(b), then there exists c ∈ (a,b) such that f'(c) = 0.</p>
-                <p><strong>Special Case:</strong> Rolle's Theorem is actually a special case of MVT where f(a) = f(b).</p>
+                <h3>2. Rolle's Theorem</h3>
+                <p><strong>Statement:</strong> If f continuous on [a,b], differentiable on (a,b), and f(a) = f(b), then ∃ c ∈ (a,b) with f'(c) = 0.</p>
+                
+                <div class="proof-box">
+                    <h4>Proof Sketch:</h4>
+                    <div class="step">1. If f constant → f'(x) = 0 everywhere</div>
+                    <div class="step">2. If f not constant → by EVT has max/min in (a,b)</div>
+                    <div class="step">3. By Fermat's Theorem, f'(c) = 0 at that point</div>
+                </div>
+                
+                <div class="memory-device">
+                    <strong>Memory Device:</strong> "Same height at ends → somewhere flat in between"
+                </div>
             </div>
-
-            <div class="example">
-                <h4>Exam Tip:</h4>
-                <p>You MUST be able to state these theorems perfectly and reproduce their proofs. This is typically 4-8 marks guaranteed if you memorize them.</p>
+            
+            <div class="theorem-box">
+                <h3>3. Mean Value Theorem (MVT)</h3>
+                <p><strong>Statement:</strong> If f continuous on [a,b] and differentiable on (a,b), then ∃ c ∈ (a,b) such that:</p>
+                <div class="formula">
+                    $$f'(c) = \frac{f(b) - f(a)}{b - a}$$
+                </div>
+                
+                <div class="proof-box">
+                    <h4>Proof Sketch:</h4>
+                    <div class="step">1. Define helper function: \(g(x) = f(x) - f(a) - \frac{f(b)-f(a)}{b-a}(x-a)\)</div>
+                    <div class="step">2. Check g(a) = g(b) = 0</div>
+                    <div class="step">3. Apply Rolle's Theorem to g(x)</div>
+                    <div class="step">4. g'(c) = 0 → \(f'(c) = \frac{f(b)-f(a)}{b-a}\)</div>
+                </div>
+                
+                <div class="memory-device">
+                    <strong>Memory Device:</strong> "Some instantaneous rate equals average rate"
+                </div>
+            </div>
+            
+            <div class="theorem-box">
+                <h3>4. Fundamental Theorem of Calculus</h3>
+                <p><strong>Part 1:</strong> \(\frac{d}{dx}\left[\int_{a}^{x} f(t)dt\right] = f(x)\)</p>
+                
+                <div class="proof-box">
+                    <h4>Proof Sketch:</h4>
+                    <div class="step">1. Let \(F(x) = \int_{a}^{x} f(t)dt\)</div>
+                    <div class="step">2. \(\frac{F(x+h) - F(x)}{h} \approx \frac{1}{h}\int_{x}^{x+h} f(t)dt \approx f(x)\)</div>
+                    <div class="step">3. Limit h→0 gives F'(x) = f(x)</div>
+                </div>
+                
+                <p><strong>Part 2:</strong> \(\int_{a}^{b} f(x)dx = F(b) - F(a)\) where F' = f</p>
+                
+                <div class="proof-box">
+                    <h4>Proof Sketch:</h4>
+                    <div class="step">1. Let \(F(x) = \int_{a}^{x} f(t)dt + C\)</div>
+                    <div class="step">2. F(b) - F(a) = \(\int_{a}^{b} f(t)dt\)</div>
+                </div>
+                
+                <div class="memory-device">
+                    <strong>Memory Device:</strong> "Derivative undoes integral, integral undoes derivative"
+                </div>
             </div>
         </section>
 
-        <section class="content-section">
-            <h2>2. Integration Techniques (High Priority)</h2>
+        <section id="fermat" class="content-section">
+            <h2>Fermat's Theorem - Complete Proof</h2>
             
-            <h3>Integration by Parts</h3>
-            <div class="formula">
-                ∫ u dv = uv - ∫ v du
-            </div>
-            <p><strong>LIATE Rule:</strong> Choose u in this order: Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential</p>
-            
-            <div class="example">
-                <h4>Example: ∫ e^x cos(x) dx</h4>
-                <div class="step">Let u = e^x, dv = cos(x) dx</div>
-                <div class="step">Then du = e^x dx, v = sin(x)</div>
-                <div class="step">∫ e^x cos(x) dx = e^x sin(x) - ∫ e^x sin(x) dx</div>
-                <div class="step">Apply integration by parts again to ∫ e^x sin(x) dx</div>
-                <div class="step">Final answer: ½ e^x (sin(x) + cos(x)) + C</div>
-            </div>
-            
-            <h3>Trigonometric Substitution</h3>
-            <div class="formula">
-                √(a² - x²) → use x = a sinθ<br>
-                √(a² + x²) → use x = a tanθ<br>
-                √(x² - a²) → use x = a secθ
-            </div>
-            
-            <h3>Partial Fractions</h3>
-            <p>For rational functions P(x)/Q(x) where deg(P) < deg(Q)</p>
-            
-            <div class="example">
-                <h4>Example: ∫ (3x+11)/(x²-x-6) dx</h4>
-                <div class="step">Factor denominator: x²-x-6 = (x-3)(x+2)</div>
-                <div class="step">Set up: (3x+11)/[(x-3)(x+2)] = A/(x-3) + B/(x+2)</div>
-                <div class="step">Solve for A and B: A = 4, B = -1</div>
-                <div class="step">∫ [4/(x-3) - 1/(x+2)] dx = 4ln|x-3| - ln|x+2| + C</div>
-            </div>
-        </section>
-
-        <section class="content-section">
-            <h2>3. Applications of Integrals (Medium Priority)</h2>
-            
-            <h3>Volume of Revolution</h3>
-            <div class="formula">
-                Disk Method: V = π ∫ [R(x)]² dx<br>
-                Washer Method: V = π ∫ ([R(x)]² - [r(x)]²) dx<br>
-                Shell Method: V = 2π ∫ (radius)(height) dx
-            </div>
-            
-            <h3>Surface Area</h3>
-            <div class="formula">
-                SA = 2π ∫ y √(1 + (dy/dx)²) dx  (revolution about x-axis)
-            </div>
-            
-            <h3>Arc Length</h3>
-            <div class="formula">
-                L = ∫ √(1 + (dy/dx)²) dx
-            </div>
-            
-            <div class="example">
-                <h4>Problem Solving Strategy:</h4>
-                <div class="step">1. Identify the type of application (volume, surface area, arc length)</div>
-                <div class="step">2. Choose the appropriate formula</div>
-                <div class="step">3. Set up the integral with correct limits</div>
-                <div class="step">4. Simplify the integrand before integrating</div>
-                <div class="step">5. Evaluate the definite integral</div>
+            <div class="theorem-box">
+                <h3>Fermat's Theorem (Critical Point Theorem)</h3>
+                <p><strong>Statement:</strong> If a function f has a local maximum or minimum at point c, and if f'(c) exists, then f'(c) = 0.</p>
+                
+                <div class="proof-box">
+                    <h4>Complete Proof in Words:</h4>
+                    <div class="proof-text">
+                        Let's assume f has a local maximum at c (the proof for a local minimum is similar). By definition of local maximum, there exists some small interval around c where f(x) ≤ f(c) for all x in that interval.
+                    </div>
+                    <div class="proof-text">
+                        Now consider the derivative from the right: f'(c⁺) = lim[h→0⁺] [f(c+h) - f(c)]/h
+                        Since f(c+h) ≤ f(c) for small positive h, the numerator f(c+h) - f(c) is ≤ 0, while the denominator h is positive. Therefore, the difference quotient [f(c+h) - f(c)]/h ≤ 0. Taking the limit as h approaches 0 from the right, we get f'(c⁺) ≤ 0.
+                    </div>
+                    <div class="proof-text">
+                        Now consider the derivative from the left: f'(c⁻) = lim[h→0⁻] [f(c+h) - f(c)]/h
+                        For small negative h, we still have f(c+h) ≤ f(c), so the numerator f(c+h) - f(c) is ≤ 0, but now the denominator h is negative. A negative number divided by a negative number gives a positive result, so [f(c+h) - f(c)]/h ≥ 0. Taking the limit as h approaches 0 from the left, we get f'(c⁻) ≥ 0.
+                    </div>
+                    <div class="proof-text">
+                        Since we assumed f'(c) exists, the left-hand and right-hand derivatives must be equal: f'(c⁺) = f'(c⁻) = f'(c). But we have f'(c) ≤ 0 from the right-side analysis and f'(c) ≥ 0 from the left-side analysis. The only number that is simultaneously ≤ 0 and ≥ 0 is 0. Therefore, f'(c) = 0.
+                    </div>
+                </div>
+                
+                <div class="memory-device">
+                    <strong>Memory Aid:</strong> "At the top of a hill or bottom of a valley, the ground is flat."
+                </div>
+                
+                <div class="exam-tip">
+                    <h4>Why This Matters for Your Exam:</h4>
+                    <div class="step">• Fermat's Theorem is crucial for finding critical points in optimization problems</div>
+                    <div class="step">• Essential for curve sketching to locate local extrema</div>
+                    <div class="step">• Foundation for proving other theorems like Rolle's Theorem</div>
+                    <div class="step">• You might be asked to state, apply, or even reproduce this proof</div>
+                </div>
             </div>
         </section>
 
-        <section class="content-section">
-            <h2>4. Differential Equations (Medium Priority)</h2>
+        <section id="mvt-integrals" class="content-section">
+            <h2>Mean Value Theorem for Integrals - Complete Proof</h2>
             
-            <h3>Separable Equations</h3>
-            <div class="formula">
-                dy/dx = g(x)h(y) → ∫ dy/h(y) = ∫ g(x) dx
+            <div class="theorem-box">
+                <h3>Mean Value Theorem for Integrals</h3>
+                <p><strong>Statement:</strong> If f is continuous on [a,b], then there exists some c in [a,b] such that:</p>
+                <div class="formula">
+                    $$f(c) = \frac{1}{b-a} \int_{a}^{b} f(x)dx$$
+                </div>
+                
+                <div class="proof-box">
+                    <h4>Complete Proof in Words:</h4>
+                    <div class="proof-text">
+                        Since f is continuous on the closed interval [a,b], by the Extreme Value Theorem, f attains both an absolute minimum value m and an absolute maximum value M on [a,b]. That is, m ≤ f(x) ≤ M for all x in [a,b].
+                    </div>
+                    <div class="proof-text">
+                        Now, using basic properties of definite integrals, we can "sandwich" our integral between these bounds:
+                        $$\int_{a}^{b} m dx \leq \int_{a}^{b} f(x)dx \leq \int_{a}^{b} M dx$$
+                    </div>
+                    <div class="proof-text">
+                        The integral of a constant is just that constant times the length of the interval:
+                        $$m(b-a) \leq \int_{a}^{b} f(x)dx \leq M(b-a)$$
+                    </div>
+                    <div class="proof-text">
+                        Dividing all parts of this inequality by (b-a) gives:
+                        $$m \leq \frac{1}{b-a} \int_{a}^{b} f(x)dx \leq M$$
+                        So the number \(\frac{1}{b-a} \int_{a}^{b} f(x)dx\) lies between the minimum and maximum values of f on [a,b].
+                    </div>
+                    <div class="proof-text">
+                        Now, since f is continuous on [a,b], by the Intermediate Value Theorem, f must take on every value between its minimum m and maximum M. In particular, there must be some point c in [a,b] where f(c) exactly equals this intermediate value:
+                        $$f(c) = \frac{1}{b-a} \int_{a}^{b} f(x)dx$$
+                        This completes the proof.
+                    </div>
+                </div>
+                
+                <div class="memory-device">
+                    <strong>Memory Aid:</strong> "The average height equals some actual height."
+                </div>
+                
+                <div class="exam-tip">
+                    <h4>Why This Matters for Your Exam:</h4>
+                    <div class="step">• Essential for understanding the concept of average value</div>
+                    <div class="step">• Applications in physics and engineering</div>
+                    <div class="step">• Connects integration with function behavior</div>
+                    <div class="step">• You might be asked to state, apply, or even reproduce this proof</div>
+                </div>
             </div>
+        </section>
+
+        <section id="derivatives" class="content-section">
+            <h2>Part 2: Comprehensive Derivatives</h2>
             
-            <h3>First Order Linear</h3>
-            <div class="formula">
-                dy/dx + P(x)y = Q(x)<br>
-                Integrating Factor: I(x) = e^(∫P(x)dx)<br>
-                Solution: y = [∫I(x)Q(x)dx + C] / I(x)
-            </div>
+            <h3>Basic Rules</h3>
+            <table>
+                <tr>
+                    <th>Rule</th>
+                    <th>Formula</th>
+                </tr>
+                <tr>
+                    <td>Power Rule</td>
+                    <td>\(\frac{d}{dx}(x^n) = nx^{n-1}\)</td>
+                </tr>
+                <tr>
+                    <td>Constant Multiple</td>
+                    <td>\(\frac{d}{dx}[cf(x)] = cf'(x)\)</td>
+                </tr>
+                <tr>
+                    <td>Sum/Difference</td>
+                    <td>\(\frac{d}{dx}[f(x) \pm g(x)] = f'(x) \pm g'(x)\)</td>
+                </tr>
+                <tr>
+                    <td>Product Rule</td>
+                    <td>\(\frac{d}{dx}[f(x)g(x)] = f'(x)g(x) + f(x)g'(x)\)</td>
+                </tr>
+                <tr>
+                    <td>Quotient Rule</td>
+                    <td>\(\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{f'(x)g(x) - f(x)g'(x)}{[g(x)]^2}\)</td>
+                </tr>
+                <tr>
+                    <td>Chain Rule</td>
+                    <td>\(\frac{d}{dx}[f(g(x))] = f'(g(x))g'(x)\)</td>
+                </tr>
+            </table>
             
-            <div class="example">
-                <h4>Example: xy' - 2y = x², x > 0</h4>
-                <div class="step">Rewrite: y' - (2/x)y = x</div>
-                <div class="step">Integrating factor: I(x) = e^(∫-2/x dx) = e^(-2ln|x|) = 1/x²</div>
-                <div class="step">Multiply: (1/x²)y' - (2/x³)y = 1/x</div>
-                <div class="step">Left side is d/dx[y/x²], so integrate both sides</div>
-                <div class="step">Final solution: y = x²(ln|x| + C)</div>
-            </div>
+            <h3>Exponential & Logarithmic</h3>
+            <table>
+                <tr>
+                    <th>Function</th>
+                    <th>Derivative</th>
+                </tr>
+                <tr>
+                    <td>\(e^x\)</td>
+                    <td>\(e^x\)</td>
+                </tr>
+                <tr>
+                    <td>\(a^x\)</td>
+                    <td>\(a^x \ln a\)</td>
+                </tr>
+                <tr>
+                    <td>\(\ln x\)</td>
+                    <td>\(\frac{1}{x}\)</td>
+                </tr>
+                <tr>
+                    <td>\(\log_a x\)</td>
+                    <td>\(\frac{1}{x \ln a}\)</td>
+                </tr>
+            </table>
+            
+            <h3>Trigonometric</h3>
+            <table>
+                <tr>
+                    <th>Function</th>
+                    <th>Derivative</th>
+                </tr>
+                <tr>
+                    <td>\(\sin x\)</td>
+                    <td>\(\cos x\)</td>
+                </tr>
+                <tr>
+                    <td>\(\cos x\)</td>
+                    <td>\(-\sin x\)</td>
+                </tr>
+                <tr>
+                    <td>\(\tan x\)</td>
+                    <td>\(\sec^2 x\)</td>
+                </tr>
+                <tr>
+                    <td>\(\cot x\)</td>
+                    <td>\(-\csc^2 x\)</td>
+                </tr>
+                <tr>
+                    <td>\(\sec x\)</td>
+                    <td>\(\sec x \tan x\)</td>
+                </tr>
+                <tr>
+                    <td>\(\csc x\)</td>
+                    <td>\(-\csc x \cot x\)</td>
+                </tr>
+            </table>
         </section>
 
         <section class="content-section">
@@ -370,13 +844,20 @@
                 <div class="step"><strong>Day 7:</strong> Past papers and weak areas</div>
             </div>
             
-            <div class="proof-box">
-                <h3>Exam Technique</h3>
+            <div class="exam-tip">
+                <h4>Exam Technique</h4>
                 <div class="step">• Always show your work - partial marks are crucial</div>
                 <div class="step">• Start with multiple choice questions for quick marks</div>
                 <div class="step">• If stuck on a problem, write down relevant formulas</div>
                 <div class="step">• Manage your time - don't spend too long on one question</div>
                 <div class="step">• Check your work for simple algebraic errors</div>
+            </div>
+            
+            <div class="memory-device">
+                <h3>Memory Aids and Mnemonics</h3>
+                <div class="step"><strong>Integration by Parts:</strong> "LIATE" - Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential</div>
+                <div class="step"><strong>Trig Substitution:</strong> "a² - x² → sine, a² + x² → tangent, x² - a² → secant"</div>
+                <div class="step"><strong>Volume Methods:</strong> "DISK - when no hole, WASHER - when hole, SHELLS - when rotating around parallel axis"</div>
             </div>
         </section>
     </div>
@@ -387,24 +868,85 @@
     </footer>
 
     <script>
-        // Simple interactive functionality
+        // Configure MathJax
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+        
+        // Check if dark mode is preferred by system or time
+        function checkTimeForDarkMode() {
+            const hour = new Date().getHours();
+            // If it's between 6 PM and 6 AM, enable dark mode
+            return hour >= 18 || hour < 6;
+        }
+        
+        // Set initial theme based on time or saved preference
+        function setInitialTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const timeBasedDark = checkTimeForDarkMode();
+            
+            if (savedTheme === 'dark' || (savedTheme === null && (prefersDark || timeBasedDark))) {
+                enableDarkMode();
+            } else {
+                enableLightMode();
+            }
+        }
+        
+        function enableDarkMode() {
+            document.body.classList.add('dark-mode');
+            themeIcon.textContent = '☀️';
+            themeText.textContent = 'Light Mode';
+            localStorage.setItem('theme', 'dark');
+        }
+        
+        function enableLightMode() {
+            document.body.classList.remove('dark-mode');
+            themeIcon.textContent = '🌙';
+            themeText.textContent = 'Dark Mode';
+            localStorage.setItem('theme', 'light');
+        }
+        
+        function toggleTheme() {
+            if (document.body.classList.contains('dark-mode')) {
+                enableLightMode();
+            } else {
+                enableDarkMode();
+            }
+        }
+        
+        // Initialize theme
+        setInitialTheme();
+        
+        // Add event listener to theme toggle button
+        themeToggle.addEventListener('click', toggleTheme);
+        
+        // Navigation functionality
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+        
+        // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
+            // Add some visual feedback for cards
             const cards = document.querySelectorAll('.priority-card');
             
             cards.forEach(card => {
                 card.addEventListener('click', function() {
                     this.classList.toggle('active');
-                });
-            });
-            
-            // Add some visual feedback
-            const formulas = document.querySelectorAll('.formula');
-            formulas.forEach(formula => {
-                formula.addEventListener('mouseenter', function() {
-                    this.style.backgroundColor = '#e9ecef';
-                });
-                formula.addEventListener('mouseleave', function() {
-                    this.style.backgroundColor = '#f1f2f6';
                 });
             });
         });
