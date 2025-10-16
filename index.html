@@ -49,6 +49,7 @@
             color: var(--text-dark);
             background-color: var(--white);
             min-height: 100vh;
+            font-size: 16px; /* Base font size for desktop */
         }
         
         .container {
@@ -211,6 +212,7 @@
             font-family: 'Courier New', monospace;
             overflow-x: auto;
             border-left: 3px solid var(--light-orange);
+            font-size: 1rem;
         }
         
         .dark-mode .formula {
@@ -232,8 +234,23 @@
         }
         
         .step {
-            margin: 0.5rem 0;
+            margin: 0.8rem 0;
             padding-left: 1rem;
+            position: relative;
+            font-size: 1rem;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--primary-orange);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 10px;
+            font-weight: bold;
         }
         
         .weight-percentage {
@@ -260,6 +277,7 @@
             border-collapse: collapse;
             margin: 1rem 0;
             box-shadow: 0 1px 3px var(--shadow);
+            font-size: 1rem;
         }
         
         th, td {
@@ -311,6 +329,7 @@
             color: var(--text-light);
             margin-top: 2rem;
             border-top: 1px solid var(--border-light);
+            font-size: 0.9rem;
         }
         
         .section-nav {
@@ -364,6 +383,7 @@
         
         li {
             margin-bottom: 0.3rem;
+            font-size: 1rem;
         }
         
         .theme-toggle {
@@ -380,6 +400,7 @@
             gap: 8px;
             transition: background 0.3s ease;
             margin-top: 1rem;
+            font-size: 1rem;
         }
         
         .theme-toggle:hover {
@@ -389,6 +410,212 @@
         .proof-text {
             margin: 1rem 0;
             line-height: 1.7;
+            font-size: 1rem;
+        }
+        
+        .proof-step {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #FFF8E1;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary-orange);
+        }
+        
+        .dark-mode .proof-step {
+            background: #3a321e;
+            border-left: 4px solid var(--primary-orange);
+        }
+        
+        .proof-step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark-orange);
+            font-size: 1.1rem;
+        }
+        
+        /* MathJax Configuration */
+        .MathJax {
+            font-size: 1.1em !important;
+        }
+        
+        mjx-container {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        
+        /* Mobile-specific styles */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px; /* Smaller base font for mobile */
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            header {
+                padding: 1.5rem 1rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+            }
+            
+            h4 {
+                font-size: 1.1rem;
+            }
+            
+            .content-section {
+                padding: 1.5rem;
+            }
+            
+            .priority-card {
+                padding: 1.2rem;
+            }
+            
+            .priority-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .section-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                max-width: 300px;
+                padding: 0.8rem 1rem;
+                font-size: 0.95rem;
+            }
+            
+            .theme-toggle {
+                align-self: center;
+                padding: 0.8rem 1.2rem;
+                font-size: 0.95rem;
+            }
+            
+            .formula {
+                font-size: 0.95rem;
+                padding: 0.8rem;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 0.5rem;
+            }
+            
+            .step {
+                font-size: 0.95rem;
+            }
+            
+            li {
+                font-size: 0.95rem;
+            }
+            
+            .proof-text {
+                font-size: 0.95rem;
+            }
+            
+            .MathJax {
+                font-size: 1em !important;
+            }
+            
+            /* Ensure mathematical symbols are clearly visible */
+            mjx-math {
+                font-size: 1.1em !important;
+            }
+            
+            /* Make sure integrals and derivatives are extra clear */
+            mjx-mo {
+                font-size: 1.2em !important;
+            }
+            
+            /* Specifically target integral and derivative symbols */
+            mjx-mo[data-c="222B"], /* integral sign */
+            mjx-mo[data-c="2146"], /* derivative d */
+            mjx-mo[data-c="2202"] { /* partial derivative */
+                font-size: 1.3em !important;
+            }
+        }
+        
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            body {
+                font-size: 13px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 1.2rem 0.8rem;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+            
+            h4 {
+                font-size: 1.05rem;
+            }
+            
+            .content-section {
+                padding: 1.2rem;
+            }
+            
+            .priority-card {
+                padding: 1rem;
+            }
+            
+            .nav-btn {
+                padding: 0.7rem 0.9rem;
+                font-size: 0.9rem;
+            }
+            
+            .formula {
+                font-size: 0.9rem;
+                padding: 0.7rem;
+            }
+            
+            table {
+                font-size: 0.85rem;
+            }
+            
+            th, td {
+                padding: 0.4rem;
+            }
+            
+            .MathJax {
+                font-size: 0.95em !important;
+            }
+            
+            mjx-mo[data-c="222B"],
+            mjx-mo[data-c="2146"],
+            mjx-mo[data-c="2202"] {
+                font-size: 1.25em !important;
+            }
         }
         
         /* Desktop-specific styles */
@@ -412,16 +639,27 @@
             .priority-card {
                 padding: 2rem;
             }
+            
+            /* Make mathematical symbols larger on desktop */
+            .MathJax {
+                font-size: 1.2em !important;
+            }
+            
+            mjx-mo[data-c="222B"],
+            mjx-mo[data-c="2146"],
+            mjx-mo[data-c="2202"] {
+                font-size: 1.4em !important;
+            }
         }
         
         /* Tablet styles */
-        @media (max-width: 1199px) and (min-width: 768px) {
+        @media (max-width: 1199px) and (min-width: 769px) {
             .priority-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
             .container {
-                padding: 25px;
+                padding: 20px;
             }
             
             h1 {
@@ -430,74 +668,6 @@
             
             h2 {
                 font-size: 1.8rem;
-            }
-        }
-        
-        /* Mobile styles */
-        @media (max-width: 767px) {
-            .priority-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-nav {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            header {
-                padding: 1.5rem 1rem;
-            }
-            
-            .theme-toggle {
-                align-self: center;
-            }
-            
-            .content-section {
-                padding: 1.5rem;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-            
-            .nav-btn {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .priority-card, .content-section {
-                padding: 1rem;
-            }
-            
-            h1 {
-                font-size: 1.6rem;
-            }
-            
-            h2 {
-                font-size: 1.4rem;
-            }
-            
-            table {
-                font-size: 0.9rem;
-            }
-            
-            th, td {
-                padding: 0.5rem;
-            }
-            
-            .nav-btn {
-                padding: 0.6rem 1rem;
-                font-size: 0.9rem;
             }
         }
     </style>
@@ -581,9 +751,9 @@
                 
                 <div class="proof-box">
                     <h4>Proof Sketch:</h4>
-                    <div class="step">1. Continuity on closed interval → function is bounded</div>
-                    <div class="step">2. Let M = sup{f(x) : x ∈ [a,b]} and m = inf{f(x) : x ∈ [a,b]}</div>
-                    <div class="step">3. By completeness of ℝ, ∃ c,d ∈ [a,b] such that f(c) = M, f(d) = m</div>
+                    <div class="step"><span class="step-number">1</span> Continuity on closed interval → function is bounded</div>
+                    <div class="step"><span class="step-number">2</span> Let M = sup{f(x) : x ∈ [a,b]} and m = inf{f(x) : x ∈ [a,b]}</div>
+                    <div class="step"><span class="step-number">3</span> By completeness of ℝ, ∃ c,d ∈ [a,b] such that f(c) = M, f(d) = m</div>
                 </div>
                 
                 <div class="memory-device">
@@ -597,9 +767,9 @@
                 
                 <div class="proof-box">
                     <h4>Proof Sketch:</h4>
-                    <div class="step">1. If f constant → f'(x) = 0 everywhere</div>
-                    <div class="step">2. If f not constant → by EVT has max/min in (a,b)</div>
-                    <div class="step">3. By Fermat's Theorem, f'(c) = 0 at that point</div>
+                    <div class="step"><span class="step-number">1</span> If f constant → f'(x) = 0 everywhere</div>
+                    <div class="step"><span class="step-number">2</span> If f not constant → by EVT has max/min in (a,b)</div>
+                    <div class="step"><span class="step-number">3</span> By Fermat's Theorem, f'(c) = 0 at that point</div>
                 </div>
                 
                 <div class="memory-device">
@@ -616,10 +786,10 @@
                 
                 <div class="proof-box">
                     <h4>Proof Sketch:</h4>
-                    <div class="step">1. Define helper function: \(g(x) = f(x) - f(a) - \frac{f(b)-f(a)}{b-a}(x-a)\)</div>
-                    <div class="step">2. Check g(a) = g(b) = 0</div>
-                    <div class="step">3. Apply Rolle's Theorem to g(x)</div>
-                    <div class="step">4. g'(c) = 0 → \(f'(c) = \frac{f(b)-f(a)}{b-a}\)</div>
+                    <div class="step"><span class="step-number">1</span> Define helper function: \(g(x) = f(x) - f(a) - \frac{f(b)-f(a)}{b-a}(x-a)\)</div>
+                    <div class="step"><span class="step-number">2</span> Check g(a) = g(b) = 0</div>
+                    <div class="step"><span class="step-number">3</span> Apply Rolle's Theorem to g(x)</div>
+                    <div class="step"><span class="step-number">4</span> g'(c) = 0 → \(f'(c) = \frac{f(b)-f(a)}{b-a}\)</div>
                 </div>
                 
                 <div class="memory-device">
@@ -633,17 +803,17 @@
                 
                 <div class="proof-box">
                     <h4>Proof Sketch:</h4>
-                    <div class="step">1. Let \(F(x) = \int_{a}^{x} f(t)dt\)</div>
-                    <div class="step">2. \(\frac{F(x+h) - F(x)}{h} \approx \frac{1}{h}\int_{x}^{x+h} f(t)dt \approx f(x)\)</div>
-                    <div class="step">3. Limit h→0 gives F'(x) = f(x)</div>
+                    <div class="step"><span class="step-number">1</span> Let \(F(x) = \int_{a}^{x} f(t)dt\)</div>
+                    <div class="step"><span class="step-number">2</span> \(\frac{F(x+h) - F(x)}{h} \approx \frac{1}{h}\int_{x}^{x+h} f(t)dt \approx f(x)\)</div>
+                    <div class="step"><span class="step-number">3</span> Limit h→0 gives F'(x) = f(x)</div>
                 </div>
                 
                 <p><strong>Part 2:</strong> \(\int_{a}^{b} f(x)dx = F(b) - F(a)\) where F' = f</p>
                 
                 <div class="proof-box">
                     <h4>Proof Sketch:</h4>
-                    <div class="step">1. Let \(F(x) = \int_{a}^{x} f(t)dt + C\)</div>
-                    <div class="step">2. F(b) - F(a) = \(\int_{a}^{b} f(t)dt\)</div>
+                    <div class="step"><span class="step-number">1</span> Let \(F(x) = \int_{a}^{x} f(t)dt + C\)</div>
+                    <div class="step"><span class="step-number">2</span> F(b) - F(a) = \(\int_{a}^{b} f(t)dt\)</div>
                 </div>
                 
                 <div class="memory-device">
@@ -653,27 +823,45 @@
         </section>
 
         <section id="fermat" class="content-section">
-            <h2>Fermat's Theorem - Complete Proof</h2>
+            <h2>Fermat's Theorem - Step-by-Step Proof</h2>
             
             <div class="theorem-box">
                 <h3>Fermat's Theorem (Critical Point Theorem)</h3>
                 <p><strong>Statement:</strong> If a function f has a local maximum or minimum at point c, and if f'(c) exists, then f'(c) = 0.</p>
                 
                 <div class="proof-box">
-                    <h4>Complete Proof in Words:</h4>
-                    <div class="proof-text">
-                        Let's assume f has a local maximum at c (the proof for a local minimum is similar). By definition of local maximum, there exists some small interval around c where f(x) ≤ f(c) for all x in that interval.
+                    <h4>Step-by-Step Proof (Easy to Memorize):</h4>
+                    
+                    <div class="proof-step">
+                        <div class="proof-step-title">Step 1: Assume Local Maximum</div>
+                        <div class="step">Assume f has a local maximum at c (proof for minimum is similar)</div>
                     </div>
-                    <div class="proof-text">
-                        Now consider the derivative from the right: f'(c⁺) = lim[h→0⁺] [f(c+h) - f(c)]/h
-                        Since f(c+h) ≤ f(c) for small positive h, the numerator f(c+h) - f(c) is ≤ 0, while the denominator h is positive. Therefore, the difference quotient [f(c+h) - f(c)]/h ≤ 0. Taking the limit as h approaches 0 from the right, we get f'(c⁺) ≤ 0.
+                    
+                    <div class="proof-step">
+                        <div class="proof-step-title">Step 2: Analyze Right-Hand Derivative</div>
+                        <div class="step">For small h > 0: f(c+h) ≤ f(c) (by definition of local max)</div>
+                        <div class="step">Difference quotient: [f(c+h) - f(c)]/h ≤ 0 (numerator ≤ 0, denominator > 0)</div>
+                        <div class="step">Take limit as h→0⁺: f'(c⁺) ≤ 0</div>
                     </div>
-                    <div class="proof-text">
-                        Now consider the derivative from the left: f'(c⁻) = lim[h→0⁻] [f(c+h) - f(c)]/h
-                        For small negative h, we still have f(c+h) ≤ f(c), so the numerator f(c+h) - f(c) is ≤ 0, but now the denominator h is negative. A negative number divided by a negative number gives a positive result, so [f(c+h) - f(c)]/h ≥ 0. Taking the limit as h approaches 0 from the left, we get f'(c⁻) ≥ 0.
+                    
+                    <div class="proof-step">
+                        <div class="proof-step-title">Step 3: Analyze Left-Hand Derivative</div>
+                        <div class="step">For small h < 0: f(c+h) ≤ f(c) (by definition of local max)</div>
+                        <div class="step">Difference quotient: [f(c+h) - f(c)]/h ≥ 0 (numerator ≤ 0, denominator < 0)</div>
+                        <div class="step">Take limit as h→0⁻: f'(c⁻) ≥ 0</div>
                     </div>
-                    <div class="proof-text">
-                        Since we assumed f'(c) exists, the left-hand and right-hand derivatives must be equal: f'(c⁺) = f'(c⁻) = f'(c). But we have f'(c) ≤ 0 from the right-side analysis and f'(c) ≥ 0 from the left-side analysis. The only number that is simultaneously ≤ 0 and ≥ 0 is 0. Therefore, f'(c) = 0.
+                    
+                    <div class="proof-step">
+                        <div class="proof-step-title">Step 4: Combine Results</div>
+                        <div class="step">Since f'(c) exists: f'(c⁺) = f'(c⁻) = f'(c)</div>
+                        <div class="step">From Step 2: f'(c) ≤ 0</div>
+                        <div class="step">From Step 3: f'(c) ≥ 0</div>
+                        <div class="step">Only number satisfying both: f'(c) = 0</div>
+                    </div>
+                    
+                    <div class="proof-step">
+                        <div class="proof-step-title">Step 5: Conclusion</div>
+                        <div class="step">Therefore, if f has local extremum at c and f'(c) exists, then f'(c) = 0</div>
                     </div>
                 </div>
                 
@@ -683,16 +871,16 @@
                 
                 <div class="exam-tip">
                     <h4>Why This Matters for Your Exam:</h4>
-                    <div class="step">• Fermat's Theorem is crucial for finding critical points in optimization problems</div>
-                    <div class="step">• Essential for curve sketching to locate local extrema</div>
-                    <div class="step">• Foundation for proving other theorems like Rolle's Theorem</div>
-                    <div class="step">• You might be asked to state, apply, or even reproduce this proof</div>
+                    <div class="step"><span class="step-number">1</span> Essential for finding critical points in optimization problems</div>
+                    <div class="step"><span class="step-number">2</span> Foundation for curve sketching to locate local extrema</div>
+                    <div class="step"><span class="step-number">3</span> Key component in proving other theorems like Rolle's Theorem</div>
+                    <div class="step"><span class="step-number">4</span> You might be asked to state, apply, or even reproduce this proof</div>
                 </div>
             </div>
         </section>
 
         <section id="mvt-integrals" class="content-section">
-            <h2>Mean Value Theorem for Integrals - Complete Proof</h2>
+            <h2>Mean Value Theorem for Integrals - Step-by-Step Proof</h2>
             
             <div class="theorem-box">
                 <h3>Mean Value Theorem for Integrals</h3>
@@ -702,27 +890,37 @@
                 </div>
                 
                 <div class="proof-box">
-                    <h4>Complete Proof in Words:</h4>
-                    <div class="proof-text">
-                        Since f is continuous on the closed interval [a,b], by the Extreme Value Theorem, f attains both an absolute minimum value m and an absolute maximum value M on [a,b]. That is, m ≤ f(x) ≤ M for all x in [a,b].
+                    <h4>Step-by-Step Proof (Easy to Memorize):</h4>
+                    
+                    <div class="proof-step">
+                        <div class="proof-step-title">Step 1: Apply Extreme Value Theorem</div>
+                        <div class="step">Since f is continuous on [a,b], by EVT:</div>
+                        <div class="step">f attains absolute minimum m and maximum M on [a,b]</div>
+                        <div class="step">So: m ≤ f(x) ≤ M for all x in [a,b]</div>
                     </div>
-                    <div class="proof-text">
-                        Now, using basic properties of definite integrals, we can "sandwich" our integral between these bounds:
-                        $$\int_{a}^{b} m dx \leq \int_{a}^{b} f(x)dx \leq \int_{a}^{b} M dx$$
+                    
+                    <div class="proof-step">
+                        <div class="proof-step-title">Step 2: Apply Integral Properties</div>
+                        <div class="step">Integrate the inequality: ∫ₐᵇ m dx ≤ ∫ₐᵇ f(x)dx ≤ ∫ₐᵇ M dx</div>
+                        <div class="step">Since m and M are constants: m(b-a) ≤ ∫ₐᵇ f(x)dx ≤ M(b-a)</div>
                     </div>
-                    <div class="proof-text">
-                        The integral of a constant is just that constant times the length of the interval:
-                        $$m(b-a) \leq \int_{a}^{b} f(x)dx \leq M(b-a)$$
+                    
+                    <div class="proof-step">
+                        <div class="proof-step-title">Step 3: Divide by (b-a)</div>
+                        <div class="step">Divide all parts by (b-a): m ≤ [1/(b-a)]∫ₐᵇ f(x)dx ≤ M</div>
+                        <div class="step">Let A = [1/(b-a)]∫ₐᵇ f(x)dx (this is the average value)</div>
+                        <div class="step">So: m ≤ A ≤ M</div>
                     </div>
-                    <div class="proof-text">
-                        Dividing all parts of this inequality by (b-a) gives:
-                        $$m \leq \frac{1}{b-a} \int_{a}^{b} f(x)dx \leq M$$
-                        So the number \(\frac{1}{b-a} \int_{a}^{b} f(x)dx\) lies between the minimum and maximum values of f on [a,b].
+                    
+                    <div class="proof-step">
+                        <div class="proof-step-title">Step 4: Apply Intermediate Value Theorem</div>
+                        <div class="step">Since f is continuous on [a,b] and A is between m and M</div>
+                        <div class="step">By IVT, there exists c in [a,b] such that f(c) = A</div>
                     </div>
-                    <div class="proof-text">
-                        Now, since f is continuous on [a,b], by the Intermediate Value Theorem, f must take on every value between its minimum m and maximum M. In particular, there must be some point c in [a,b] where f(c) exactly equals this intermediate value:
-                        $$f(c) = \frac{1}{b-a} \int_{a}^{b} f(x)dx$$
-                        This completes the proof.
+                    
+                    <div class="proof-step">
+                        <div class="proof-step-title">Step 5: Conclusion</div>
+                        <div class="step">Therefore: f(c) = [1/(b-a)]∫ₐᵇ f(x)dx for some c in [a,b]</div>
                     </div>
                 </div>
                 
@@ -732,10 +930,10 @@
                 
                 <div class="exam-tip">
                     <h4>Why This Matters for Your Exam:</h4>
-                    <div class="step">• Essential for understanding the concept of average value</div>
-                    <div class="step">• Applications in physics and engineering</div>
-                    <div class="step">• Connects integration with function behavior</div>
-                    <div class="step">• You might be asked to state, apply, or even reproduce this proof</div>
+                    <div class="step"><span class="step-number">1</span> Essential for understanding the concept of average value</div>
+                    <div class="step"><span class="step-number">2</span> Applications in physics and engineering</div>
+                    <div class="step"><span class="step-number">3</span> Connects integration with function behavior</div>
+                    <div class="step"><span class="step-number">4</span> You might be asked to state, apply, or even reproduce this proof</div>
                 </div>
             </div>
         </section>
@@ -837,27 +1035,27 @@
             
             <div class="theorem-box">
                 <h3>7-Day Study Plan</h3>
-                <div class="step"><strong>Day 1-2:</strong> Master theorems and proofs (15 marks)</div>
-                <div class="step"><strong>Day 3-4:</strong> Practice integration techniques (12 marks)</div>
-                <div class="step"><strong>Day 5:</strong> Applications of integrals (8 marks)</div>
-                <div class="step"><strong>Day 6:</strong> Differential equations (6 marks)</div>
-                <div class="step"><strong>Day 7:</strong> Past papers and weak areas</div>
+                <div class="step"><span class="step-number">1</span><strong>Day 1-2:</strong> Master theorems and proofs (15 marks)</div>
+                <div class="step"><span class="step-number">2</span><strong>Day 3-4:</strong> Practice integration techniques (12 marks)</div>
+                <div class="step"><span class="step-number">3</span><strong>Day 5:</strong> Applications of integrals (8 marks)</div>
+                <div class="step"><span class="step-number">4</span><strong>Day 6:</strong> Differential equations (6 marks)</div>
+                <div class="step"><span class="step-number">5</span><strong>Day 7:</strong> Past papers and weak areas</div>
             </div>
             
             <div class="exam-tip">
                 <h4>Exam Technique</h4>
-                <div class="step">• Always show your work - partial marks are crucial</div>
-                <div class="step">• Start with multiple choice questions for quick marks</div>
-                <div class="step">• If stuck on a problem, write down relevant formulas</div>
-                <div class="step">• Manage your time - don't spend too long on one question</div>
-                <div class="step">• Check your work for simple algebraic errors</div>
+                <div class="step"><span class="step-number">1</span> Always show your work - partial marks are crucial</div>
+                <div class="step"><span class="step-number">2</span> Start with multiple choice questions for quick marks</div>
+                <div class="step"><span class="step-number">3</span> If stuck on a problem, write down relevant formulas</div>
+                <div class="step"><span class="step-number">4</span> Manage your time - don't spend too long on one question</div>
+                <div class="step"><span class="step-number">5</span> Check your work for simple algebraic errors</div>
             </div>
             
             <div class="memory-device">
                 <h3>Memory Aids and Mnemonics</h3>
-                <div class="step"><strong>Integration by Parts:</strong> "LIATE" - Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential</div>
-                <div class="step"><strong>Trig Substitution:</strong> "a² - x² → sine, a² + x² → tangent, x² - a² → secant"</div>
-                <div class="step"><strong>Volume Methods:</strong> "DISK - when no hole, WASHER - when hole, SHELLS - when rotating around parallel axis"</div>
+                <div class="step"><span class="step-number">1</span><strong>Integration by Parts:</strong> "LIATE" - Logarithmic, Inverse trig, Algebraic, Trigonometric, Exponential</div>
+                <div class="step"><span class="step-number">2</span><strong>Trig Substitution:</strong> "a² - x² → sine, a² + x² → tangent, x² - a² → secant"</div>
+                <div class="step"><span class="step-number">3</span><strong>Volume Methods:</strong> "DISK - when no hole, WASHER - when hole, SHELLS - when rotating around parallel axis"</div>
             </div>
         </section>
     </div>
@@ -868,13 +1066,51 @@
     </footer>
 
     <script>
-        // Configure MathJax
+        // Configure MathJax for clear mathematical symbols
         window.MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                tags: 'ams'
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                renderActions: {
+                    // Add custom rendering for integral and derivative symbols
+                    addClearText: [156,
+                        (doc) => {
+                            for (const math of doc.math) {
+                                if (math.root && math.root.isKind('mo')) {
+                                    const mo = math.root;
+                                    if (mo.getText() === '∫' || mo.getText() === 'd' || mo.getText() === '∂') {
+                                        mo.attributes.set('style', 'font-size: 1.3em !important');
+                                    }
+                                }
+                            }
+                        },
+                        (doc) => {
+                            for (const math of doc.math) {
+                                if (math.root) {
+                                    math.root.walk((node) => {
+                                        if (node.isKind('mo')) {
+                                            const text = node.getText();
+                                            if (text === '∫' || text === 'd' || text === '∂') {
+                                                node.attributes.set('style', 'font-size: 1.3em !important');
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            chtml: {
+                scale: 1.1, // Slightly larger scaling for better visibility
+                displayAlign: 'center'
             },
             svg: {
+                scale: 1.1, // Slightly larger scaling for better visibility
                 fontCache: 'global'
             }
         };
@@ -949,6 +1185,27 @@
                     this.classList.toggle('active');
                 });
             });
+            
+            // Adjust MathJax rendering for mobile
+            function adjustMathJaxForMobile() {
+                if (window.innerWidth <= 768) {
+                    // Increase scaling for mobile
+                    if (window.MathJax && window.MathJax.chtml) {
+                        window.MathJax.chtml.scale = 1.2;
+                    }
+                } else {
+                    // Default scaling for desktop
+                    if (window.MathJax && window.MathJax.chtml) {
+                        window.MathJax.chtml.scale = 1.1;
+                    }
+                }
+            }
+            
+            // Initial adjustment
+            adjustMathJaxForMobile();
+            
+            // Adjust on resize
+            window.addEventListener('resize', adjustMathJaxForMobile);
         });
     </script>
 </body>
